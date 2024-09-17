@@ -1,0 +1,303 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #d8829a;
+    color: #fff;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 50%;
+    position: relative;
+    margin: auto;
+    padding-top: 50px;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: italic;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+    color: #430e1a;
+    font-size: 13px;
+    padding: 8px 8px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: right;
+    font-style: italic;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #430e1a;
+    font-size: 12px;
+    padding: 12px 12px;
+    position: absolute;
+    top: 4;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 0.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* Modal Styles */
+.modal-section {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+#openModal {
+    background-color: #d8829a;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    width: 50%;
+    max-width: 300px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Accordion Styles */
+.accordion-section {
+    margin: 2rem 0;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+}
+
+.accordion-header {
+    background-color: #d8829a;
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.accordion-content {
+    display: none;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #f9f9f9;
+    border-radius: 0 0 2px 2px;
+    text-align: left;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #d8829a;
+    color: #fff;
+    padding:2px 3px;
+    text-align: center;
+    font-size: smaller;
+}
+
+.footer-content {
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+/* Media Queries for Responsive Design */
+
+/* For tablets and medium screens */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .slideshow-container {
+        padding-top: 20px;
+    }
+
+    .prev, .next {
+        font-size: 16px;
+    }
+
+    #openModal {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+
+    .accordion-header {
+        font-size: 1rem;
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    .prev, .next {
+        font-size: 14px;
+    }
+
+    .text {
+        font-size: 12px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    .accordion-header {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        padding: 0.5rem;
+    }
+
+    .footer-content {
+        font-size: 0.8rem;
+    }
+
+    .social-icons a {
+        font-size: 1.2rem;
+    }
+}
