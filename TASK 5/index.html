@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 14px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input:focus {
+            border-color: #74ebd5;
+            outline: none;
+            box-shadow: 0 0 8px rgba(116, 235, 213, 0.4);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #74ebd5;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #56c6c6;
+        }
+        .error {
+            color: red;
+            font-size: 0.85em;
+            display: none;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        .success {
+            color: green;
+            font-size: 0.85em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Reservation Form</h2>
+        <form id="reservationForm" novalidate>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <div class="error" id="nameError">Name is required.</div>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <div class="error" id="emailError">Please enter a valid email address.</div>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="123-456-7890">
+            <div class="error" id="phoneError">Please enter a valid phone number (e.g., 123-456-7890).</div>
+
+            <label for="date">Reservation Date</label>
+            <input type="date" id="date" name="date">
+            <div class="error" id="dateError">Please select a valid date.</div>
+
+            <label for="guests">Number of Guests</label>
+            <input type="number" id="guests" name="guests" placeholder="1-10 Guests" min="1" max="10">
+            <div class="error" id="guestsError">Please enter a number between 1 and 10.</div>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div class="success" id="successMessage" style="display:none;">
+            Reservation successfully submitted!
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let valid = true;
+
+            // Name validation
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('nameError');
+            if (name.value.trim() === '') {
+                nameError.style.display = 'block';
+                valid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            // Email validation
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                emailError.style.display = 'block';
+                valid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            // Phone validation
+            const phone = document.getElementById('phone');
+            const phoneError = document.getElementById('phoneError');
+            const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+            if (!phonePattern.test(phone.value)) {
+                phoneError.style.display = 'block';
+                valid = false;
+            } else {
+                phoneError.style.display = 'none';
+            }
+
+            // Date validation
+            const date = document.getElementById('date');
+            const dateError = document.getElementById('dateError');
+            if (date.value === '') {
+                dateError.style.display = 'block';
+                valid = false;
+            } else {
+                dateError.style.display = 'none';
+            }
+
+            // Guests validation
+            const guests = document.getElementById('guests');
+            const guestsError = document.getElementById('guestsError');
+            if (guests.value < 1 || guests.value > 10) {
+                guestsError.style.display = 'block';
+                valid = false;
+            } else {
+                guestsError.style.display = 'none';
+            }
+
+            // If all validations pass
+            if (valid) {
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        });
+
+        // Real-time validation
+        document.getElementById('name').addEventListener('input', function() {
+            const nameError = document.getElementById('nameError');
+            if (this.value.trim() === '') {
+                nameError.style.display = 'block';
+            } else {
+                nameError.style.display = 'none';
+            }
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(this.value)) {
+                emailError.style.display = 'block';
+            } else {
+                emailError.style.display = 'none';
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', function() {
+            const phoneError = document.getElementById('phoneError');
+            const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+            if (!phonePattern.test(this.value)) {
+                phoneError.style.display = 'block';
+            } else {
+                phoneError.style.display = 'none';
+            }
+        });
+
+        document.getElementById('date').addEventListener('input', function() {
+            const dateError = document.getElementById('dateError');
+            if (this.value === '') {
+                dateError.style.display = 'block';
+            } else {
+                dateError.style.display = 'none';
+            }
+        });
+
+        document.getElementById('guests').addEventListener('input', function() {
+            const guestsError = document.getElementById('guestsError');
+            if (this.value < 1 || this.value > 10) {
+                guestsError.style.display = 'block';
+            } else {
+                guestsError.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
